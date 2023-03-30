@@ -64,4 +64,24 @@
 
 # Задача 4
 
+    # Движок InnoDB
+    default-storage-engine = InnoDB
 
+    # Скорость IO важнее сохранности данных
+    innodb_flush_log_at_trx_commit = 2
+
+    # Компрессия таблиц для экономии места на диске
+    innodb_file_per_table = 1
+    innodb_file_format = Barracuda
+    innodb_file_format_max = Barracuda
+    innodb_compression_algorithm = zlib
+    innodb_compression_level = 6
+
+    # Размер буфера с незакомиченными транзакциями 1 Мб
+    innodb_log_buffer_size = 1M
+
+    # Буфер кеширования 30% от ОЗУ
+    innodb_buffer_pool_size = 30% RAM
+
+    # Размер файла логов операций 100 Мб
+    innodb_log_file_size = 100M
