@@ -40,3 +40,21 @@
     |        1 |
     +----------+
     1 row in set (0.00 sec)
+    
+# Задача 2
+
+    mysql> select * from user_attributes
+        -> ;
+    +------------------+-----------+---------------------------------------------------------------------+
+    | USER             | HOST      | ATTRIBUTE                                                           |
+    +------------------+-----------+---------------------------------------------------------------------+
+    | root             | %         | NULL                                                                |
+    | mysql.infoschema | localhost | NULL                                                                |
+    | mysql.session    | localhost | NULL                                                                |
+    | mysql.sys        | localhost | NULL                                                                |
+    | root             | localhost | NULL                                                                |
+    | test             | localhost | {"comment": "{\"LastName\": \"Pretty\", \"FirstName\": \"James\"}"} |
+    +------------------+-----------+---------------------------------------------------------------------+
+    6 rows in set (0.00 sec)
+
+# Задача 3
