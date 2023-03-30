@@ -58,3 +58,10 @@
     6 rows in set (0.00 sec)
 
 # Задача 3
+<img width="1308" alt="Screenshot 2023-03-30 at 00 38 53" src="https://user-images.githubusercontent.com/97674120/228764356-7c538f57-c335-46d0-ac80-e66240a2c13b.png">
+<img width="501" alt="Screenshot 2023-03-30 at 00 46 42" src="https://user-images.githubusercontent.com/97674120/228766497-558609ee-5160-4ec7-a274-f2c993000e53.png">
+<img width="524" alt="Screenshot 2023-03-30 at 00 47 52" src="https://user-images.githubusercontent.com/97674120/228766942-5ad9e522-e819-49ed-9712-679efa199322.png">
+
+# Задача 4
+
+
