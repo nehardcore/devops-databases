@@ -39,3 +39,20 @@
     DROP TABLE orders;
     ALTER TABLE orders_temp RENAME TO orders;
     COMMIT;
+    
+>Можно ли было изначально исключить ручное разбиение при проектировании таблицы orders?
+
+Не совсем понял про "ручное разбиение". Даже если при проктировании мы сразу разделим таблицу на две по какому-то признаку - это тоже, по сути, является ручным разбиением.
+
+# Задача 4
+>Используя утилиту pg_dump, создайте бекап БД test_database
+
+    cch@MBP-Costas 06-db-04-postgresql % docker exec -it MyPostgres sh -c "pg_dump -U postgres test_database > /var/lib/postgresql/data/db_backup_o1_o2.sql"
+>Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца title для таблиц test_database?
+
+Добавить ключевое слово UNIQUE:
+
+<img width="444" alt="Screenshot 2023-04-01 at 21 44 43" src="https://user-images.githubusercontent.com/97674120/229331875-a1cd35ff-6c0f-4264-bb19-2c916ca4669e.png">
+
+
+
