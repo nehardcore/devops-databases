@@ -37,4 +37,53 @@ https://hub.docker.com/repository/docker/nehardcore/centos_elasticsearch/
 
 >Получите список индексов и их статусов, используя API, и приведите в ответе на задание.  
 >Получите состояние кластера Elasticsearch, используя API.  
->Как вы думаете, почему часть индексов и кластер находятся в состоянии yellow?
+
+    cch@MBP-Costas 06-db-05-elasticsearch % curl -XPUT "http://localhost:9200/ind-1" -H 'Content-Type: application/json' -d '{"settings": {"index": {"number_of_shards": 1, "number_of_replicas": 0 }}}'
+    {"acknowledged":true,"shards_acknowledged":true,"index":"ind-1"}%
+
+    cch@MBP-Costas 06-db-05-elasticsearch % curl -XPUT "http://localhost:9200/ind-2" -H 'Content-Type: application/json' -d '{"settings": {"index": {"number_of_shards": 1, "number_of_replicas": 2 }}}'
+    {"acknowledged":true,"shards_acknowledged":true,"index":"ind-2"}%
+
+    cch@MBP-Costas 06-db-05-elasticsearch % curl -XPUT "http://localhost:9200/ind-3" -H 'Content-Type: application/json' -d '{"settings": {"index": {"number_of_shards": 2, "number_of_replicas": 4 }}}'
+    {"acknowledged":true,"shards_acknowledged":true,"index":"ind-3"}%
+    
+    cch@MBP-Costas 06-db-05-elasticsearch % curl -XGET "http://localhost:9200/_cat/indices?v"
+    health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+    green  open   ind-1 JJ_zd84DTlykYqR5sneIqA   1   0          0            0       225b           225b
+    yellow open   ind-3 Ht4hJZnXRoC2omjc2Bftug   2   4          0            0       450b           450b
+    yellow open   ind-2 2mk5oC8mQ2eZdqgsqs48TA   1   2          0            0       225b           225b
+    
+    cch@MBP-Costas 06-db-05-elasticsearch % curl "http://localhost:9200/_cluster/health?pretty"
+    {
+      "cluster_name" : "netology_cluster_test",
+      "status" : "yellow",
+      "timed_out" : false,
+      "number_of_nodes" : 1,
+      "number_of_data_nodes" : 1,
+      "active_primary_shards" : 4,
+      "active_shards" : 4,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 10,
+      "delayed_unassigned_shards" : 0,
+      "number_of_pending_tasks" : 0,
+      "number_of_in_flight_fetch" : 0,
+      "task_max_waiting_in_queue_millis" : 0,
+      "active_shards_percent_as_number" : 28.57142857142857
+    }
+    
+  >Как вы думаете, почему часть индексов и кластер находятся в состоянии yellow?  
+  "unassigned_shards" : 10,
+  
+  >Удалите все индексы.  
+  
+    cch@MBP-Costas 06-db-05-elasticsearch % curl -XDELETE http://localhost:9200/ind-1
+    {"acknowledged":true}%
+    cch@MBP-Costas 06-db-05-elasticsearch % curl -XDELETE http://localhost:9200/ind-2
+    {"acknowledged":true}%
+    cch@MBP-Costas 06-db-05-elasticsearch % curl -XDELETE http://localhost:9200/ind-3
+    {"acknowledged":true}%
+    
+    
+# Задание 3
+
