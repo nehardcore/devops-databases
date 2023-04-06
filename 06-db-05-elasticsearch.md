@@ -72,7 +72,8 @@ https://hub.docker.com/repository/docker/nehardcore/centos_elasticsearch/
       "active_shards_percent_as_number" : 28.57142857142857
     }
     
-  >Как вы думаете, почему часть индексов и кластер находятся в состоянии yellow?  
+  >Как вы думаете, почему часть индексов и кластер находятся в состоянии yellow? 
+
   "unassigned_shards" : 10,
   
   >Удалите все индексы.  
